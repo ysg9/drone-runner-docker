@@ -1,0 +1,39 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+  - sg1
+
+steps:
+- name: build
+  image: %%{GolangDevImage}:1-alpine
+  pull: always
+  settings:
+    build_script: build.sh
+
+- name: scan
+  image: %%{NcicdDockerRepoPrivateCR}/cicd/nancy:latest
+  pull: always
+  #settings:
+  #  log_level: debug
+  #  save_log: true
+  #failure: ignore
+  depends_on:
+  - build
+
+- name: create-image
+  image: %%{DroneDockerImage}
+  settings:
+    #dry_run: true
+    repo: %%{NcicdDockerRepoPrivateCR}/cicd/drone-runner-docker
+    build_args:
+    - BASE_IMAGE=%%{BaseAlpineImage}:latest
+    tags:
+    - 20220804
+    - ${DRONE_COMMIT}
+    - latest
+  depends_on:
+  - scan
+
