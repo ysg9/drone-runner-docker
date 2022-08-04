@@ -11,7 +11,7 @@ import (
 	"github.com/drone-runners/drone-runner-docker/engine/resource"
 	"github.com/drone/runner-go/pipeline/uploader"
 
-	"github.com/drone/runner-go/client"
+	//"github.com/drone/runner-go/client"
 	"github.com/drone/runner-go/environ/provider"
 	"github.com/drone/runner-go/logger"
 	"github.com/drone/runner-go/pipeline/reporter/remote"
@@ -37,10 +37,11 @@ func (c *processCommand) run(*kingpin.ParseContext) error {
 	// setup the global logrus logger.
 	setupLogger(config)
 
-	cli := client.New(
+	cli := newRunnerClient(
 		config.Client.Address,
 		config.Client.Secret,
 		config.Client.SkipVerify,
+		config.Client.Timeout,
 	)
 	if config.Client.Dump {
 		cli.Dumper = logger.StandardDumper(

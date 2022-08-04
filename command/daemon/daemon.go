@@ -65,10 +65,11 @@ func (c *daemonCommand) run(*kingpin.ParseContext) error {
 		cancel()
 	})
 
-	cli := client.New(
+	cli := newRunnerClient(
 		config.Client.Address,
 		config.Client.Secret,
 		config.Client.SkipVerify,
+		config.Client.Timeout,
 	)
 	if config.Client.Dump {
 		cli.Dumper = logger.StandardDumper(

@@ -23,6 +23,7 @@ type Config struct {
 		Host       string `envconfig:"DRONE_RPC_HOST"   required:"true"`
 		Secret     string `envconfig:"DRONE_RPC_SECRET" required:"true"`
 		SkipVerify bool   `envconfig:"DRONE_RPC_SKIP_VERIFY"`
+		Timeout    int    `envconfig:"DRONE_RPC_TIMEOUT" default:"10"`
 		Dump       bool   `envconfig:"DRONE_RPC_DUMP_HTTP"`
 		DumpBody   bool   `envconfig:"DRONE_RPC_DUMP_HTTP_BODY"`
 	}
