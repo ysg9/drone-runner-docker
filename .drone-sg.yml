@@ -12,6 +12,8 @@ steps:
   pull: always
   settings:
     build_script: build.sh
+  depends_on:
+  - clone
 
 - name: scan
   image: %%{NcicdDockerRepoPrivateCR}/cicd/nancy:latest
@@ -23,17 +25,45 @@ steps:
   depends_on:
   - build
 
+- name: set-image-tags
+  image: %%{BaseAlpineImage}
+  commands:
+  - echo -n "$(date +%Y%m%d)" > .tags
+  - echo -n ",${DRONE_COMMIT}" >> .tags
+  - echo ",latest" >> .tags
+  - cat .tags
+  depends_on:
+  - clone
+  when:
+    event:
+    - cron
+
 - name: create-image
-  image: %%{DroneDockerImage}
+  image: %%{DroneKanikoImage}
   settings:
     #dry_run: true
     repo: %%{NcicdDockerRepoPrivateCR}/cicd/drone-runner-docker
     build_args:
     - BASE_IMAGE=%%{BaseAlpineImage}:latest
-    tags:
-    - 20220804
-    - ${DRONE_COMMIT}
-    - latest
+    #tags:
+    #- 20220804
+    #- ${DRONE_COMMIT}
+    #- latest
   depends_on:
+  - set-image-tags
   - scan
+  when:
+    event:
+    - cron
+
+- name: notify-end
+  image: %%{DroneEmailImage}
+  depends_on:
+  - create-image
+  when:
+    status:
+    - failure
+    - success
+    event:
+    - cron
 
