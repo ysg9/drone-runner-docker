@@ -14,7 +14,7 @@ go mod edit -replace github.com/docker/docker=github.com/docker/engine@v17.12.0-
 go mod edit -replace github.com/containerd/containerd=github.com/containerd/containerd@v1.6.12
 go mod edit -replace golang.org/x/text=golang.org/x/text@v0.5.0
 go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.49
-go mod edit -replace k8s.io/apiserver=k8s.io/apiserver@v0.26.0
+#go mod edit -replace k8s.io/apiserver=k8s.io/apiserver@v0.26.0
 go mod tidy
 
 export GOPRIVATE=github.com/sgnus-it**
@@ -52,3 +52,5 @@ echo "go.graph generated"
 
 # whitelist CVE-2022-29153: consul issue; consul is not used.
 echo CVE-2022-29153 > .nancy-ignore
+# whitelist sonatype-2022-6522: false +ve
+echo sonatype-2022-6522 >> .nancy-ignore
