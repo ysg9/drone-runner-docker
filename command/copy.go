@@ -8,7 +8,7 @@ import (
 	"io"
 	"os"
 
-	"gopkg.in/alecthomas/kingpin.v2"
+	kingpin "github.com/alecthomas/kingpin/v2"
 )
 
 type copyCommand struct {
