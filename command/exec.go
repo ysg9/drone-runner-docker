@@ -34,7 +34,7 @@ import (
 
 	"github.com/mattn/go-isatty"
 	"github.com/sirupsen/logrus"
-	"gopkg.in/alecthomas/kingpin.v2"
+	kingpin "github.com/alecthomas/kingpin/v2"
 )
 
 type execCommand struct {
