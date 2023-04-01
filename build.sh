@@ -14,7 +14,7 @@ go mod edit -replace github.com/containerd/containerd=github.com/containerd/cont
 go mod edit -replace golang.org/x/text=golang.org/x/text@v0.5.0
 go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.49
 #go mod edit -replace k8s.io/apiserver=k8s.io/apiserver@v0.26.0
-go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.5
+#go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.5
 go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.51.0
 go mod tidy
 
