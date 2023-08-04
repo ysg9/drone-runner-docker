@@ -11,13 +11,14 @@ rm -f go.mod go.sum
 go mod init ${APPNAME}
 go mod edit -replace github.com/docker/docker=github.com/docker/engine@v17.12.0-ce-rc1.0.20200309214505-aa6a9891b09c+incompatible
 go mod edit -replace github.com/containerd/containerd=github.com/containerd/containerd@v1.6.20
-go mod edit -replace golang.org/x/text=golang.org/x/text@v0.5.0
-go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.49
+go mod edit -replace golang.org/x/text=golang.org/x/text@v0.11.0
+go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.55
 #go mod edit -replace k8s.io/apiserver=k8s.io/apiserver@v0.26.0
 #go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.5
-go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.51.0
+go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.55.0
 go mod edit -replace github.com/emicklei/go-restful/v3=github.com/emicklei/go-restful/v3@v3.10.2
-go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.56.0
+go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.57.0
+go mod edit -replace golang.org/x/net=golang.org/x/net@v0.13.0
 go mod tidy
 
 export GOPRIVATE=github.com/sgnus-it**
