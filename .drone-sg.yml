@@ -8,7 +8,7 @@ trigger:
 
 steps:
 - name: build
-  image: %%{GolangDevImage}:1.20-alpine
+  image: %%{GolangDevImage}:%%{GolangDevVer}
   pull: always
   settings:
     build_script: build.sh
