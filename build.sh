@@ -18,9 +18,10 @@ go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.55
 go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.12
 go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.55.0
 go mod edit -replace github.com/emicklei/go-restful/v3=github.com/emicklei/go-restful/v3@v3.10.2
-go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.59.0
+go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.62.1
 go mod edit -replace go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc=go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.1
 go mod edit -replace golang.org/x/net=golang.org/x/net@v0.18.0
+go mod edit -replace google.golang.org/protobuf=google.golang.org/protobuf@v1.33.0
 go mod tidy
 
 export GOPRIVATE=github.com/sgnus-it**
