@@ -10,18 +10,22 @@ WORKDIR=${DRONE_WORKSPACE:-.}
 rm -f go.mod go.sum
 go mod init ${APPNAME}
 go mod edit -replace github.com/docker/docker=github.com/docker/engine@v17.12.0-ce-rc1.0.20200309214505-aa6a9891b09c+incompatible
-go mod edit -replace github.com/containerd/containerd=github.com/containerd/containerd@v1.6.20
-go mod edit -replace golang.org/x/text=golang.org/x/text@v0.11.0
-go mod edit -replace golang.org/x/crypto=golang.org/x/crypto@v0.17.0
-go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.55
+go mod edit -replace github.com/containerd/containerd=github.com/containerd/containerd@v1.7.18
+go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.13
+#go mod edit -replace golang.org/x/text=golang.org/x/text@v0.11.0
+#go mod edit -replace golang.org/x/crypto=golang.org/x/crypto@v0.17.0
+#go mod edit -replace github.com/miekg/dns=github.com/miekg/dns@v1.1.55
 #go mod edit -replace k8s.io/apiserver=k8s.io/apiserver@v0.26.0
-go mod edit -replace github.com/opencontainers/runc=github.com/opencontainers/runc@v1.1.12
-go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.55.0
-go mod edit -replace github.com/emicklei/go-restful/v3=github.com/emicklei/go-restful/v3@v3.10.2
-go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.62.1
-go mod edit -replace go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc=go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.46.1
-go mod edit -replace golang.org/x/net=golang.org/x/net@v0.18.0
-go mod edit -replace google.golang.org/protobuf=google.golang.org/protobuf@v1.33.0
+go mod edit -replace github.com/lestrrat-go/jwx=github.com/lestrrat-go/jwx/v2@v2.1.0
+go mod edit -replace github.com/vektah/gqlparser/v2=github.com/vektah/gqlparser/v2@v2.5.16
+go mod edit -replace github.com/open-policy-agent/opa=github.com/open-policy-agent/opa@v0.66.0
+go mod edit -replace github.com/hashicorp/go-retryablehttp=github.com/hashicorp/go-retryablehttp@v0.7.7
+#go mod edit -replace github.com/emicklei/go-restful/v3=github.com/emicklei/go-restful/v3@v3.10.2
+#go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.62.1
+go mod edit -replace go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc=go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.52.0
+#go mod edit -replace golang.org/x/net=golang.org/x/net@v0.18.0
+#go mod edit -replace google.golang.org/protobuf=google.golang.org/protobuf@v1.33.0
+go mod edit -replace github.com/distribution/reference=github.com/distribution/reference@v0.5.0
 go mod tidy
 
 export GOPRIVATE=github.com/sgnus-it**
